@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+set -e
+
+if [ $# -ne 1 ]; then
+  exit 1
+fi
+name="${1%.*}"
+ext="${1##*.}"
+
+if [ "$name" == "$ext" ]; then
+  ext=""
+else
+  ext=".${ext}"
+fi
+
+mv "$1" "${name}.$(date +'%Y%m%d')${ext}"
